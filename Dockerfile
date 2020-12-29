@@ -15,4 +15,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8080
-CMD ["node", "server/server.js"]
+CMD ["npm", "run", "pm2"]
