@@ -15,7 +15,9 @@
     "debug:brk": "node --inspect-brk=0.0.0.0:9229 $npm_package_config_entrypoint",
     "debug:legacy": "node --debug=0.0.0.0:5858 $npm_package_config_entrypoint",
     "test": "nyc mocha --exit",
-    "dev": "nodemon $npm_package_config_entrypoint"
+    "dev": "nodemon $npm_package_config_entrypoint",
+    "migrate": "node ./server/config/migrate.js",
+    "pm2": "pm2 start processes.json --no-daemon"
   },
   "nodemonConfig": {
     "env": {
@@ -25,7 +27,10 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "log4js": "^4.0.2"
+    "log4js": "^4.0.2",
+    "pg": "^8.5.1",
+    "pm2": "^4.5.1",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "nodemon": "^1.12.1",

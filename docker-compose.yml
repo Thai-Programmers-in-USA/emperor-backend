@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  db:
+    image: 'postgres:13'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+    - emperor-db:/var/lib/postgresql/data
+
+  emperor:
+    image: 'peepo3663/emperor:1.0'
+    build:
+      context: .
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: db
+    depends_on:
+      - db
+    ports:
+    - '80:8080'
+
+volumes:
+  emperor-db:
